@@ -1,0 +1,212 @@
+.section {
+  border-top: 1px solid var(--border);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+}
+
+.heading em {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+.subheading {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 320px;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ─── Featured grid ─── */
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5px;
+  margin-bottom: 1.5px;
+}
+
+/* ─── Other projects ─── */
+.otherLabel {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin: 4rem 0 1.5px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.otherGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5px;
+}
+
+/* ─── Card ─── */
+.card {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s ease,
+    opacity 0.6s var(--ease-out),
+    translate 0.6s var(--ease-out);
+  opacity: 0;
+  translate: 0 20px;
+  cursor: default;
+}
+
+.card.visible {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.card:hover {
+  border-color: var(--border-2);
+  box-shadow: 0 0 0 1px var(--border-2), inset 0 0 60px rgba(255,255,255,0.01);
+}
+
+.card.featured {
+  background: var(--bg-3);
+}
+
+.card.featured:hover {
+  border-color: rgba(232,255,71,0.3);
+  box-shadow: 0 0 30px rgba(232,255,71,0.04);
+}
+
+.cardInner {
+  padding: 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* ─── Card header ─── */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.featuredBadge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 0.15rem 0.5rem;
+  border-radius: 1px;
+}
+
+.dates {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+.cardLinks {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.iconLink {
+  color: var(--text-dim);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.iconLink:hover { color: var(--accent); }
+
+/* ─── Card body ─── */
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.cardDesc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.cardLongDesc {
+  font-size: 0.83rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  font-weight: 300;
+  padding-top: 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .featuredGrid, .otherGrid { grid-template-columns: 1fr; }
+  .sectionHead { flex-direction: column; align-items: flex-start; }
+}
+
+/* ─── Card expand hint ─── */
+.expandHint {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s;
+  margin-left: 0.15rem;
+}
+
+.card:hover .expandHint {
+  opacity: 1;
+  color: var(--accent);
+}
+
+/* ─── Card cursor ─── */
+.card {
+  cursor: pointer;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

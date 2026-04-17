@@ -1,0 +1,54 @@
+/* Hide system cursor globally when custom cursor is mounted */
+:global(body) {
+  cursor: none;
+}
+:global(a),
+:global(button),
+:global([role='button']) {
+  cursor: none;
+}
+
+.dot,
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+}
+
+.dot.visible,
+.ring.visible {
+  opacity: 1;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+}
+
+.ring {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(232, 255, 71, 0.45);
+  transition:
+    opacity 0.3s ease,
+    width 0.25s var(--ease-out),
+    height 0.25s var(--ease-out),
+    border-color 0.25s ease;
+}
+
+.ring.big {
+  width: 46px;
+  height: 46px;
+  border-color: rgba(232, 255, 71, 0.7);
+}
+
+@media (pointer: coarse) {
+  .dot, .ring { display: none; }
+}

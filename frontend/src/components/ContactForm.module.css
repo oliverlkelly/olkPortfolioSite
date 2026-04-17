@@ -1,0 +1,221 @@
+.formWrap {
+  margin-top: 4rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+}
+
+.formLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+/* ─── Form layout ─── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+/* ─── Field ─── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fieldLabel {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.input {
+  background: var(--bg-2);
+  border: 1px solid var(--border-2);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 300;
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  width: 100%;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.input::placeholder {
+  color: var(--text-dim);
+}
+
+.input:focus {
+  border-color: rgba(232, 255, 71, 0.4);
+  box-shadow: 0 0 0 3px rgba(232, 255, 71, 0.06);
+}
+
+.hasError .input {
+  border-color: #ff5959;
+}
+
+.fieldError {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #ff5959;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Footer ─── */
+.formFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+.formNote {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+
+.formNote a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-decoration-color: var(--border-2);
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.formNote a:hover { color: var(--accent); }
+
+/* ─── Submit btn ─── */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  min-width: 160px;
+  justify-content: center;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(232, 255, 71, 0.2);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.submitBtn.loading {
+  background: var(--accent-dim);
+}
+
+/* ─── Spinner ─── */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-top-color: var(--bg);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Error banner ─── */
+.errorBanner {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #ff5959;
+  background: rgba(255, 89, 89, 0.08);
+  border: 1px solid rgba(255, 89, 89, 0.25);
+  padding: 0.75rem 1rem;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Success ─── */
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+.successIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(232, 255, 71, 0.1);
+  border: 1px solid rgba(232, 255, 71, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.resetBtn {
+  background: none;
+  border: 1px solid var(--border-2);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.resetBtn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+@media (max-width: 600px) {
+  .formWrap { padding: 1.5rem; }
+  .row      { grid-template-columns: 1fr; }
+  .formFooter { flex-direction: column; align-items: stretch; }
+  .submitBtn  { width: 100%; }
+}

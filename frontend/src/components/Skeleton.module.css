@@ -1,0 +1,70 @@
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem var(--page-pad) 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.heroSkeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  max-width: 700px;
+}
+
+.bar {
+  height: 14px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bg-3) 25%, var(--border) 50%, var(--bg-3) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.sm  { width: 120px; height: 10px; }
+.md  { width: 60%; }
+.lg  { width: 80%; height: 60px; }
+.xl  { width: 90%; height: 90px; }
+
+.pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.pill {
+  width: 70px;
+  height: 24px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bg-3) 25%, var(--border) 50%, var(--bg-3) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.btns {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.btn {
+  width: 140px;
+  height: 40px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bg-3) 25%, var(--border) 50%, var(--bg-3) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+.btnSecondary {
+  width: 110px;
+  opacity: 0.5;
+}
