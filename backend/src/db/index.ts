@@ -15,14 +15,25 @@ pool.on('error', (err) => {
 });
 
 export async function initDb(): Promise<void> {
-  const client = await pool.connect();
-  try {
-    const schemaPath = path.join(__dirname, 'schema.sql');
-    const schema = fs.readFileSync(schemaPath, 'utf-8');
-    await client.query(schema);
-    console.log('✅ Database schema initialised');
-  } finally {
-    client.release();
+  let retries = 5;
+  while (retries > 0) {
+    try {
+      const client = await pool.connect();
+      try {
+        const schemaPath = path.join(__dirname, 'schema.sql');
+        const schema = fs.readFileSync(schemaPath, 'utf-8');
+        await client.query(schema);
+        console.log('✅ Database schema initialised');
+        return;
+      } finally {
+        client.release();
+      }
+    } catch (err) {
+      retries -= 1;
+      console.log(`⏳ Waiting for database... (${retries} retries left)`);
+      if (retries === 0) throw err;
+      await new Promise(res => setTimeout(res, 2000));
+    }
   }
 }
 

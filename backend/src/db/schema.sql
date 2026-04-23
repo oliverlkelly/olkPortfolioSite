@@ -5,7 +5,7 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 -- Projects table
 CREATE TABLE IF NOT EXISTS projects (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL UNIQUE,
   description TEXT NOT NULL,
   long_description TEXT,
   tech_stack TEXT[] NOT NULL DEFAULT '{}',
@@ -37,7 +37,8 @@ CREATE TABLE IF NOT EXISTS experience (
   company_logo_url VARCHAR(500),
   display_order INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(company, role, start_date)
 );
 
 -- Education table
@@ -57,13 +58,14 @@ CREATE TABLE IF NOT EXISTS education (
   institution_logo_url VARCHAR(500),
   display_order INTEGER DEFAULT 0,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(institution, degree)
 );
 
 -- Profile / owner info
 CREATE TABLE IF NOT EXISTS profile (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL UNIQUE,
   title VARCHAR(255) NOT NULL,
   bio TEXT,
   email VARCHAR(255),
@@ -89,7 +91,7 @@ INSERT INTO profile (name, title, bio, email, github_url, linkedin_url, location
   'https://linkedin.com/in/oliverlk',
   'Sydney, Australia',
   ARRAY['TypeScript', 'React', 'Node.js', 'PostgreSQL', 'AWS', 'Docker', 'GraphQL', 'Next.js']
-) ON CONFLICT DO NOTHING;
+) ON CONFLICT (name) DO NOTHING;
 
 INSERT INTO projects (title, description, long_description, tech_stack, github_url, live_url, featured, display_order, start_date, end_date) VALUES
 (
@@ -131,7 +133,7 @@ INSERT INTO projects (title, description, long_description, tech_stack, github_u
   'https://cli-toolkit.dev',
   false, 4,
   '2022-09-01', NULL
-);
+) ON CONFLICT (title) DO NOTHING;
 
 INSERT INTO experience (company, role, location, employment_type, description, achievements, tech_stack, start_date, end_date, is_current, display_order) VALUES
 (
@@ -177,7 +179,7 @@ INSERT INTO experience (company, role, location, employment_type, description, a
   ],
   ARRAY['React', 'Next.js', 'Node.js', 'PostgreSQL', 'Stripe', 'Vercel', 'AWS'],
   '2018-01-01', '2020-06-01', false, 3
-);
+) ON CONFLICT (company, role, start_date) DO NOTHING;
 
 INSERT INTO education (institution, degree, field_of_study, location, description, achievements, grade, start_date, end_date, display_order) VALUES
 (
@@ -204,4 +206,4 @@ INSERT INTO education (institution, degree, field_of_study, location, descriptio
   ARRAY['Scored 890 / 1000', 'Completed 2021'],
   'Pass (890/1000)',
   '2021-01-01', '2021-03-01', 2
-);
+) ON CONFLICT (institution, degree) DO NOTHING;
