@@ -1,0 +1,390 @@
+{
+  "info": {
+    "name": "Portfolio API",
+    "description": "API collection for Portfolio website backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Public",
+      "item": [
+        {
+          "name": "Get Profile",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile"]
+            }
+          }
+        },
+        {
+          "name": "Get All Projects",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Featured Projects",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/featured",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "featured"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Project",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-...",
+                  "description": "Project UUID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Experience",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/experience",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "experience"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Experience",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/experience/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "experience", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-...",
+                  "description": "Experience UUID"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Education",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/api/education",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "education"]
+            }
+          }
+        },
+        {
+          "name": "Submit Contact Form",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/contact",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "contact"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john@example.com\",\n  \"subject\": \"Hello from Postman\",\n  \"message\": \"This is a test message sent via Postman collection.\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Login (Get Token)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "login"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"password\": \"portfolio-admin\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Profile",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/profile",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "profile"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Oliver Liam Kelly\",\n  \"title\": \"Full-Stack Engineer\",\n  \"bio\": \"Updated bio here.\",\n  \"email\": \"contact@oliverliamkelly.com\",\n  \"github_url\": \"https://github.com/oliverlk\",\n  \"location\": \"Sydney, Australia\",\n  \"skills\": [\"TypeScript\", \"React\", \"Node.js\"]\n}"
+            }
+          }
+        },
+        {
+          "name": "Create Project",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "projects"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"New Project\",\n  \"description\": \"A short description\",\n  \"long_description\": \"A very long detailed description.\",\n  \"tech_stack\": [\"React\", \"TypeScript\"],\n  \"github_url\": \"https://github.com/example\",\n  \"featured\": false,\n  \"display_order\": 5,\n  \"start_date\": \"2024-01-01\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Project",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/projects/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "projects", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Project\",\n  \"featured\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Project",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/projects/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "projects", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Experience",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/experience",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "experience"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company\": \"Tech Corp\",\n  \"role\": \"Software Engineer\",\n  \"location\": \"Sydney\",\n  \"employment_type\": \"Full-time\",\n  \"description\": \"Worked on the backend API.\",\n  \"achievements\": [\"Improved performance by 50%\"],\n  \"tech_stack\": [\"Node.js\", \"PostgreSQL\"],\n  \"start_date\": \"2023-01-01\",\n  \"is_current\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Experience",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/experience/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "experience", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"company\": \"Tech Corp (Updated)\",\n  \"is_current\": false,\n  \"end_date\": \"2024-01-01\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Experience",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/experience/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "experience", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Education",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/education",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "education"]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"institution\": \"University of Technology\",\n  \"degree\": \"Master of IT\",\n  \"field_of_study\": \"Computer Science\",\n  \"start_date\": \"2020-02-01\",\n  \"end_date\": \"2022-11-01\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Education",
+          "request": {
+            "method": "PUT",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/education/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "education", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grade\": \"High Distinction\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Education",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/education/:id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "education", ":id"],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "b5e8b4e4-..."
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "{{adminToken}}",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3001",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
