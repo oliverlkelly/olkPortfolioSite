@@ -35,7 +35,7 @@
 .ring {
   width: 28px;
   height: 28px;
-  border: 1px solid rgba(232, 255, 71, 0.45);
+  border: 1px solid rgba(167, 139, 250, 0.45);
   transition:
     opacity 0.3s ease,
     width 0.25s var(--ease-out),
@@ -46,7 +46,7 @@
 .ring.big {
   width: 46px;
   height: 46px;
-  border-color: rgba(232, 255, 71, 0.7);
+  border-color: rgba(167, 139, 250, 0.7);
 }
 
 @media (pointer: coarse) {

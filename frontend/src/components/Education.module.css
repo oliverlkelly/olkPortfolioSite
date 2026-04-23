@@ -113,7 +113,7 @@ a.institution:hover { color: var(--accent); }
   font-size: 0.65rem;
   letter-spacing: 0.06em;
   color: var(--accent);
-  border: 1px solid rgba(232,255,71,0.25);
+  border: 1px solid rgba(167, 139, 250, 0.25);
   padding: 0.2rem 0.6rem;
   border-radius: 1px;
   white-space: nowrap;

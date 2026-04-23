@@ -74,7 +74,7 @@
 
 .socialBtn:hover {
   color: var(--accent);
-  border-color: rgba(232,255,71,0.4);
+  border-color: rgba(167, 139, 250, 0.4);
 }
 
 /* ─── Divider ─── */

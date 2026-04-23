@@ -62,7 +62,7 @@
 
 .item.current .dot {
   background: var(--accent);
-  box-shadow: 0 0 12px rgba(232,255,71,0.4);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.4);
 }
 
 .line {

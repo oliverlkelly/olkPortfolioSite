@@ -29,7 +29,7 @@
   max-width: 700px;
   max-height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(232,255,71,0.06) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.12) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -116,7 +116,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1px solid rgba(232,255,71,0.3);
+  border: 1px solid rgba(167, 139, 250, 0.3);
   padding: 0.35rem 0.8rem;
   border-radius: 2px;
 }
@@ -169,7 +169,7 @@
 .primaryBtn:hover {
   background: var(--accent-dim);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(232,255,71,0.2);
+  box-shadow: 0 8px 24px rgba(167, 139, 250, 0.2);
 }
 
 .secondaryBtn {
