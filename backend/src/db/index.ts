@@ -21,9 +21,16 @@ export async function initDb(): Promise<void> {
       const client = await pool.connect();
       try {
         const schemaPath = path.join(__dirname, 'schema.sql');
+        const seedPath = path.join(__dirname, 'seed.sql');
         const schema = fs.readFileSync(schemaPath, 'utf-8');
+        const seed = fs.readFileSync(seedPath, 'utf-8');
+        
         await client.query(schema);
         console.log('✅ Database schema initialised');
+        
+        await client.query(seed);
+        console.log('✅ Database seeded');
+        
         return;
       } finally {
         client.release();

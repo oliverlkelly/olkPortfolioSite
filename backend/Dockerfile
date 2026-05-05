@@ -14,6 +14,7 @@ FROM base AS runner
 ENV NODE_ENV=production
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/src/db/schema.sql ./dist/db/schema.sql
+COPY --from=builder /app/src/db/seed.sql ./dist/db/seed.sql
 COPY --from=deps    /app/node_modules ./node_modules
 COPY package*.json ./
 
